@@ -21,7 +21,8 @@ RUN yum clean all\
 && cd pdf2htmlEX \
 && git checkout incoming \
 && cmake . \
-&& make -j2 \
+&& make -j"$(nproc)" \
 && make install \
+&& cd \
 && rm -rf /pdf2htmlEX \
 && yum remove cmake gcc git gcc-c++ cpp make -y 

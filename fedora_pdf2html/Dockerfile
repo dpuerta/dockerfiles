@@ -1,11 +1,11 @@
 FROM fedora:21
 MAINTAINER David Puerta Vera <puertavera@gmail.com>
 
-RUN localedef -c -i es_ES -f ISO-8859-1 es_ES.iso88591
+#RUN localedef -c -i es_ES -f ISO-8859-1 es_ES.iso88591
 
-ENV LANG es_ES.iso88591
-ENV LANGUAGE es_ES.iso88591
-ENV LC_ALL es_ES.iso88591
+#ENV LANG es_ES.iso88591
+#ENV LANGUAGE es_ES.iso88591
+#ENV LC_ALL es_ES.iso88591
 
 RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
 &&  curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-amd64" \

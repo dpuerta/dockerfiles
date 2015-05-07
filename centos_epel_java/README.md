@@ -32,4 +32,4 @@ If you want to change the locale override those ENV variables in your image:
 
 or in your container at running time:
 
-	docker run -d --name app_name -e "LANG=en_US.UTF-8" -e "LANGUAGE=en_US.UTF-8" -e "LC_ALL=en_US.UTF-8" fbiete/centos_epel:7
+	docker run -d --name app_name -e "LANG=en_US.UTF-8" -e "LANGUAGE=en_US.UTF-8" -e "LC_ALL=en_US.UTF-8" dpuerta/centos_epel_java:7

@@ -4,6 +4,8 @@ MAINTAINER David Puerta Vera <puertavera@gmail.com>
 ENV WILDFLY_VERSION 8.2.0.Final
 
 COPY wildfly-$WILDFLY_VERSION /usr/local/software/wildfly-$WILDFLY_VERSION
+http://download.jboss.org/wildfly/8.2.0.Final/wildfly-8.2.0.Final.tar.gz
+
 RUN ln -s  /usr/local/software/wildfly-$WILDFLY_VERSION /usr/local/software/wildfly
 
 RUN mkdir /var/log/wildfly \

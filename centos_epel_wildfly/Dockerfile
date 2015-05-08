@@ -12,7 +12,7 @@ RUN cd /usr/local/ \
 RUN ln -s  /usr/local/wildfly-$WILDFLY_VERSION /usr/local/wildfly
 
 RUN mkdir /var/log/wildfly \
-&& ln -s /var/log/wildfly /usr/local/wildfly/standalone/log \
+&& ln -s /var/log/wildfly /usr/local/wildfly/standalone/log 
 COPY init.d/wildfly.conf /etc/default/wildfly.conf
 COPY init.d/wildfly-init-redhat.sh /etc/init.d/wildfly
 

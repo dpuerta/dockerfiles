@@ -8,7 +8,7 @@ COPY jboss-$JBOSS_VERSION /usr/local/jboss-$JBOSS_VERSION
 RUN ln -s /usr/local/jboss-$JBOSS_VERSION /usr/local/jboss
 
 RUN mkdir /var/log/jboss \
-&& ln -s /var/log/jboss /usr/local/jboss/server/default/log \
+&& ln -s /var/log/jboss /usr/local/jboss/server/default/log 
 
 COPY jboss /usr/bin/
 

@@ -1,7 +1,7 @@
 Lista de dockers creados:
-===========================
+==
 - CENTOS:
-
+=
 	- Centos_epel_base
 		- centos_epel_java
 		- ImageMagi
@@ -16,8 +16,8 @@ Lista de dockers creados:
 	- centos_epel_wildfly
      		- centos_epel_base 
      		- wildfly 8.2
-	- Fedora:
-
+- Fedora:
+=
 	- fedora_pdf2html
 		- pdf2html (https://github.com/coolwanglu/pdf2htmlEX) rama incoming
 		- ImageMagic 

@@ -1,3 +1,4 @@
 #!/bin/bash
 
-/usr/local/software/jboss/bin/run.sh -b 0.0.0.0 > /var/log/jboss/jboss.log 2>/var/log/jboss.log $
+echo "ARRANCANDO JBOSS..."
+/usr/local/jboss/bin/run.sh -b 0.0.0.0 > /var/log/jboss/jboss.log 2>&1

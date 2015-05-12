@@ -3,7 +3,7 @@
 FULL_PATH=`realpath $0`
 DPATH=`dirname $FULL_PATH`
 
-docker=( "wildfly", "jboss" "mysql" "ldap" )
+docker=( "wildfly" "jboss" "mysql" "ldap" )
 
 ### validateOpction [containerName]
 function validateOption {
@@ -40,19 +40,20 @@ function build {
 ####### build para cada imagen
 
 function build_wildfly {
-	echo "$1"
+	docker pull dpuerta/centos_epel_wildfly:8.2 >/dev/null
 }
 
 function build_jboss {
-	echo "$1"
+	docker pull dpuerta/centos_epel_jboss:4.2.2 >/dev/null
+	
 }
 
 function build_mysql {
-	echo "$1"
+	docker pull dpuerta/centos_epel_mysql:5.1 >/dev/null
 }
 
 function build_ldap {
-	echo "$1"
+	docker pull dpuerta/centos_epel_slapd:2.4 >/dev/null
 }
 
 ### run [containerName]
@@ -66,22 +67,26 @@ function run {
 ###### run para cada contenedor
 
 function run_wildfly {
+	build_wildfly
 	echo "Creamos el contenedor de wildfly"
 	docker run -d -p 8080:8080 --name wildfly -v /var/log/wildfly:/var/log/wildfly dpuerta/centos_epel_wildfly:8.2
 	 
 }
 
 function run_jboss {
+	build_jboss
 	echo "Creamos el contenedor de jboss"
 	docker run -d --name jboss -v /var/log/jboss:/var/log/jboss -p 8080:8080 dpuerta/centos_epel_jboss:4.2.2 >/dev/null
 }
 
 function run_mysql {
+	build_mysql
 	echo "Creamos el contenedor de mysql"
 	docker run -d -e MYSQL_ROOT_PASSWORD="12345" -e MYSQL_USER=prueba -e MYSQL_USER_TEST=test -e MYSQL_PASSWORD="12345" -e MYSQL_PASSWORD_TEST="12345" -e MYSQL_DATABASE="prueba" -e MYSQL_DATABASE_TEST="test"  -p 3306:3306 --name mysql dpuerta/centos_epel_mysql:5.1 >/dev/null
 }
 
 function run_ldap {
+	build_ldap
 	echo "Creamos el contenedor de ldap"
 	docker run -d --name ldap -p 389:389 dpuerta/centos_epel_slapd:2.4 >/dev/null
 }
@@ -124,19 +129,26 @@ function restart {
 
 ################################
 
+function messages {
+	echo "ERROR"
+	echo "USE $0 [start|stop|restart|run|delete] CONTENEDOR"
+	echo "LISTA DE CONTENEDORES: "${docker[@]}
+	echo
+}
+
 if [ $(validateOption "${docker[@]}" $2) == "y" ]; then
 	case $1 in
-		start|stop|restart|run|build|delete)
+		start|stop|restart|run|delete)
 			$1 $2
 			;;
 		*)
-			echo "USE $0 [start|stop|restart|run|build|delete] CONTENEDOR"
+			messages
 			exit 2
 	esac
 
 	exit 0
 else
-	echo "ERROR: CONTENEDOR  no disponible"
+	messages
 	exit 2
 fi
 

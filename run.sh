@@ -40,7 +40,7 @@ function build {
 ####### build para cada imagen
 
 function build_wildfly {
-	docker pull dpuerta/centos_epel_wildfly:8.2 >/dev/null
+	docker pull dpuerta/centos_epel_wildfly:9.0 >/dev/null
 }
 
 function build_jboss {
@@ -69,7 +69,7 @@ function run {
 function run_wildfly {
 	build_wildfly
 	echo "Creamos el contenedor de wildfly"
-	docker run -d -p 8080:8080 --name wildfly -v /var/log/wildfly:/var/log/wildfly dpuerta/centos_epel_wildfly:8.2
+	docker run -d -p 8080:8080 -p 9990:9990 --name wildfly -v /var/log/wildfly:/var/log/wildfly dpuerta/centos_epel_wildfly:9.0
 	 
 }
 

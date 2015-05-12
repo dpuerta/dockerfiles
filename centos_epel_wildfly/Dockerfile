@@ -1,7 +1,7 @@
 FROM dpuerta/centos_epel_base:7
 MAINTAINER David Puerta Vera <puertavera@gmail.com>
 
-ENV WILDFLY_VERSION 8.2.0.Final
+ENV WILDFLY_VERSION 9.0.0.CR1
 
 RUN cd /usr/local/ \
 && curl -o /usr/local/wildfly-$WILDFLY_VERSION.tar.gz -SL http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz \

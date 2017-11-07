@@ -1,4 +1,4 @@
-FROM dpuerta/centos_epel_base:7
+FROM dpuerta/centos_epel_base:8
 MAINTAINER David Puerta Vera <puertavera@gmail.com>
 
 ENV WILDFLY_VERSION 8.2.0.Final
@@ -21,6 +21,7 @@ COPY standalone.xml /usr/local/wildfly/standalone/configuration/
 VOLUME [ "/var/log/wildfly" ]
 
 EXPOSE 8080
+EXPOSE 9990
 
 CMD [ "/usr/local/wildfly/bin/standalone.sh" ]
 

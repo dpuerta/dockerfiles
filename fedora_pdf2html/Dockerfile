@@ -1,4 +1,4 @@
-FROM fedora:21
+FROM fedora:26
 MAINTAINER David Puerta Vera <puertavera@gmail.com>
 
 #RUN localedef -c -i es_ES -f ISO-8859-1 es_ES.iso88591
@@ -14,9 +14,9 @@ RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD
 && rm /usr/local/bin/gosu.asc \
 && chmod +x /usr/local/bin/gosu
 
-RUN yum clean all\
-&& yum install cmake gcc gnu-getopt java-1.8.0-openjdk libpng-devel fontforge-devel cairo-devel poppler-devel libspiro-devel freetype-devel  poppler-data libjpeg-turbo-devel git  gcc-c++ cpp -y make ImageMagick \
-&& yum clean all \
+RUN dnf clean all\
+&& dnf install cmake gcc gnu-getopt java-1.8.0-openjdk libpng-devel fontforge-devel cairo-devel poppler-devel libspiro-devel freetype-devel  poppler-data libjpeg-turbo-devel git  gcc-c++ cpp -y make ImageMagick \
+&& dnf clean all \
 && git clone git://github.com/coolwanglu/pdf2htmlEX.git \
 && cd pdf2htmlEX \
 && git checkout incoming \
@@ -25,4 +25,4 @@ RUN yum clean all\
 && make install \
 && cd \
 && rm -rf /pdf2htmlEX \
-&& yum remove cmake gcc git gcc-c++ cpp make -y 
+&& dnf remove cmake gcc git gcc-c++ cpp make -y 

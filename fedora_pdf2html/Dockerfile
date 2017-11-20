@@ -1,4 +1,4 @@
-FROM fedora:26
+FROM fedora:27
 MAINTAINER David Puerta Vera <puertavera@gmail.com>
 
 #RUN localedef -c -i es_ES -f ISO-8859-1 es_ES.iso88591

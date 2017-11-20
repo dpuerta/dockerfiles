@@ -25,4 +25,4 @@ RUN dnf clean all\
 && make install \
 && cd \
 && rm -rf /pdf2htmlEX \
-&& dnf remove cmake gcc git gcc-c++ cpp make -y 
+&& dnf remove cmake gcc git gcc-c++ cpp -y 
